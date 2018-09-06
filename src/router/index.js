@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      component: () => import('../components/main/RMain')
+      component: () => import(/* webpackChunkName: "group-home" */'../components/main/RMain')
     }
   ]
 })
