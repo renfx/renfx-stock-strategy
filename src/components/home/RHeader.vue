@@ -3,19 +3,29 @@
       <van-nav-bar
         style="height: 44px"
         fixed
-                   @click-left="onClickLeft"
-                   @click-right="clickSearch"
+        @click-left="onClickLeft"
+        @click-right="clickSearch"
       >
         <van-icon name="contact" slot="left" />
         <van-icon name="search"  slot="right" />
-        <van-tabs slot="title" :line-width="14" v-model="tabIndex">
-          <van-tab v-for="(value,key) in topTabs" :key="key" >
-            <div slot="title">
-              {{value}}
-            </div>
-          </van-tab>
-        </van-tabs>
+
       </van-nav-bar>
+      <van-row >
+        <van-col span="3" ><van-icon name="contact"/></van-col>
+        <van-col span="18">
+          <van-tabs :line-width="14" v-model="tabIndex">
+            <van-tab v-for="(value,key) in topTabs" :key="key" >
+              <div slot="title">
+                {{value}}
+              </div>
+            </van-tab>
+          </van-tabs>
+        </van-col>
+        <van-col span="3" class="van-nav-bar"><van-icon name="search"  /></van-col>
+      </van-row>
+
+
+
 
 
 
@@ -57,8 +67,4 @@
 </script>
 
 <style scoped>
-  .van-nav-bar__title {
-    margin: 0 auto;
-    max-width: 70%;
-  }
 </style>
