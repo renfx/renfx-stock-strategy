@@ -4,9 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vant from 'vant';
+import MIcon from './components/icon/MaterialIcon'
 import 'vant/lib/vant-css/index.css';
 Vue.config.productionTip = false
 Vue.use(Vant);
+Vue.component('MIcon',MIcon)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
