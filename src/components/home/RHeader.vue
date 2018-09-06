@@ -1,18 +1,18 @@
 <template>
     <div>
-      <van-nav-bar
-        style="height: 44px"
-        fixed
-        @click-left="onClickLeft"
-        @click-right="clickSearch"
-      >
-        <van-icon name="contact" slot="left" />
-        <van-icon name="search"  slot="right" />
+      <!--<van-nav-bar-->
+        <!--style="height: 44px"-->
+        <!--fixed-->
+        <!--@click-left="onClickLeft"-->
+        <!--@click-right="clickSearch"-->
+      <!--&gt;-->
+        <!--<van-icon name="contact" slot="left" />-->
+        <!--<van-icon name="search"  slot="right" />-->
 
-      </van-nav-bar>
-      <van-row >
-        <van-col span="3" ><van-icon name="contact"/></van-col>
-        <van-col span="18">
+      <!--</van-nav-bar>-->
+      <van-row>
+        <van-col span="4" class="van-nav-bar van-hairline--top-bottom" style="height: 44px"><van-icon name="contact"/></van-col>
+        <van-col span="16">
           <van-tabs :line-width="14" v-model="tabIndex">
             <van-tab v-for="(value,key) in topTabs" :key="key" >
               <div slot="title">
@@ -21,7 +21,7 @@
             </van-tab>
           </van-tabs>
         </van-col>
-        <van-col span="3" class="van-nav-bar"><van-icon name="search"  /></van-col>
+        <van-col span="4" class="van-nav-bar van-hairline--top-bottom" style="height: 44px"><van-icon name="search"  /></van-col>
       </van-row>
 
 
@@ -67,4 +67,15 @@
 </script>
 
 <style scoped>
+  .topLeft{
+    left: 15px;
+    bottom: 0;
+    font-size: 14px;
+    position: absolute;
+    user-select: none;
+    text-align: center;
+    line-height: 46px;
+    background-color: #fff;
+    height: 46px;
+  }
 </style>
