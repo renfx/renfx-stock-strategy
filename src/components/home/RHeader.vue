@@ -56,9 +56,9 @@
     }
 </script>
 
-<style>
+<style scoped>
   .van-nav-bar__title {
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 70%;
   }
 </style>
