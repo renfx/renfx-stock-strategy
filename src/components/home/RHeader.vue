@@ -11,8 +11,8 @@
 
       <!--</van-nav-bar>-->
       <van-row>
-        <van-col span="4" class="van-nav-bar van-hairline--top-bottom" style="height: 44px"><van-icon name="contact"/></van-col>
-        <van-col span="16">
+        <van-col span="3" class="van-nav-bar van-hairline--top-bottom" style="height: 44px;line-height: 38px;"><van-icon name="contact"/></van-col>
+        <van-col span="18">
           <van-tabs :line-width="14" v-model="tabIndex">
             <van-tab v-for="(value,key) in topTabs" :key="key" >
               <div slot="title">
@@ -21,7 +21,7 @@
             </van-tab>
           </van-tabs>
         </van-col>
-        <van-col span="4" class="van-nav-bar van-hairline--top-bottom" style="height: 44px"><van-icon name="search"  /></van-col>
+        <van-col span="3" class="van-nav-bar van-hairline--top-bottom" style="height: 44px;line-height: 38px;"><van-icon name="search"  /></van-col>
       </van-row>
 
 
