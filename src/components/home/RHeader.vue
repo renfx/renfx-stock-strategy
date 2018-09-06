@@ -59,6 +59,6 @@
 <style>
   .van-nav-bar__title {
     margin: 0 auto;
-    max-width: 70%;
+    max-width: 80%;
   }
 </style>
