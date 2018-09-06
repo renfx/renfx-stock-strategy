@@ -4,7 +4,7 @@
         style="height: 44px"
         fixed
                    @click-left="onClickLeft"
-                   @click-right="showRight=!showRight"
+                   @click-right="clickSearch"
       >
         <van-icon name="contact" slot="left" />
         <van-icon name="search"  slot="right" />
@@ -15,12 +15,6 @@
             </div>
           </van-tab>
         </van-tabs>
-        <!--<van-tabbar v-model="active" style="height: 46px;" slot="title" :fixed="false">-->
-          <!--<van-tabbar-item style="flex-direction: initial;">A股</van-tabbar-item>-->
-          <!--<van-tabbar-item style="flex-direction: initial;">美股</van-tabbar-item>-->
-          <!--<van-tabbar-item style="flex-direction: initial;">证券</van-tabbar-item>-->
-          <!--<van-tabbar-item style="flex-direction: initial;">证券</van-tabbar-item>-->
-        <!--</van-tabbar>-->
       </van-nav-bar>
 
 
@@ -46,7 +40,7 @@
           show:false,
           showRight:false,
           active:0,
-          topTabs:{'0':'A股','1':'证券','2':'A股','3':'国外'},
+          topTabs:{'0':'A股','1':'证券','2':'A股','3':'国外','4':'国外','5':'国外'},
           tabIndex:0,
         }
       },
@@ -54,10 +48,17 @@
         onClickLeft() {
           this.show = true
         },
+        clickSearch(){
+          this.$router.push("/search")
+        }
       },
         name: "r-header"
     }
 </script>
 
-<style scoped>
+<style>
+  .van-nav-bar__title {
+    margin: 0 auto;
+    max-width: 70%;
+  }
 </style>

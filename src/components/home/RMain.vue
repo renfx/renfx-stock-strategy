@@ -1,14 +1,15 @@
 <template>
     <div >
       <r-header/>
-      <van-pull-refresh style="margin-bottom: 100px;" v-model="isLoading" @refresh="onRefresh">
-        <van-swipe :autoplay="3000">
+      <van-pull-refresh style="margin-bottom: 56px;"  v-model="isLoading" @refresh="onRefresh">
+        <van-swipe :autoplay="3000" class="van-hairline--bottom">
           <van-swipe-item v-for="(image, index) in images" :key="index">
             <img v-lazy="image" >
           </van-swipe-item>
         </van-swipe>
         <van-list
-          style="margin-top: 10px"
+          class="van-hairline--top"
+          style="margin-top: 6px"
           v-model="loading"
           :finished="finished"
           @load="onLoad"

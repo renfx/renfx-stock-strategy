@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition :name='transitionName'>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -9,7 +11,19 @@ export default {
   name: 'App',
   data(){
     return {
-
+      transitionName:''
+    }
+  },
+  watch:{
+    $route(to, from) {
+      let isBack = this.$router.isBack;
+      console.log(isBack)
+      if( isBack ){
+        this.transitionName = 'van-fade'
+      }else{
+        this.transitionName = 'van-fade'
+      }
+      this.$router.isBack = false;
     }
   },
   methods: {
@@ -22,4 +36,5 @@ export default {
   body {
     background-color: #fafafa;
   }
+
 </style>

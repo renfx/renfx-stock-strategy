@@ -22,7 +22,7 @@
 
         },
         onCancel(){
-          this.$emit('hide',false)
+          this.$router.goBack()
         }
       },
       name: "r-search"
