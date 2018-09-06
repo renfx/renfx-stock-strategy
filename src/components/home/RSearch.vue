@@ -1,15 +1,11 @@
 <template>
     <div>
-      <van-nav-bar title="标题" left-text="返回" left-arrow>
-        <van-icon name="search" slot="right" />
-      </van-nav-bar>
       <van-search
         v-model="value"
         placeholder="请输入搜索关键词"
         show-action
-        @search="onSearch"
+        @cancel="onCancel"
       >
-        <div slot="action" @click="onSearch">搜索</div>
       </van-search>
     </div>
 </template>
@@ -24,6 +20,9 @@
       methods:{
         onSearch:function(){
 
+        },
+        onCancel(){
+          this.$emit('hide',false)
         }
       },
       name: "r-search"

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <van-tabbar v-model="active" fixed>
+      <van-tabbar v-model="active">
         <van-tabbar-item v-for="(value,key) in tabbars" :key="key">
           <span>{{value}}</span>
           <m-icon slot="icon" :type="key"/>
