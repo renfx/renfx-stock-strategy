@@ -10,9 +10,9 @@
         <!--<van-icon name="search"  slot="right" />-->
 
       <!--</van-nav-bar>-->
-      <van-row>
-        <van-col span="3" class="van-nav-bar van-hairline--top-bottom" style="height: 44px;line-height: 38px;"><van-icon name="contact"/></van-col>
-        <van-col span="18">
+      <van-row class="fixed">
+        <van-col span="3" @click.native="onClickLeft" class="van-nav-bar van-hairline--top-bottom top-left-right" ><van-icon name="contact"/></van-col>
+        <van-col span="17">
           <van-tabs :line-width="14" v-model="tabIndex">
             <van-tab v-for="(value,key) in topTabs" :key="key" >
               <div slot="title">
@@ -21,7 +21,7 @@
             </van-tab>
           </van-tabs>
         </van-col>
-        <van-col span="3" class="van-nav-bar van-hairline--top-bottom" style="height: 44px;line-height: 38px;"><van-icon name="search"  /></van-col>
+        <van-col span="4" @click.native="clickSearch" class="van-nav-bar van-hairline--top-bottom top-left-right" ><van-icon name="search"  /></van-col>
       </van-row>
 
 
@@ -67,15 +67,14 @@
 </script>
 
 <style scoped>
-  .topLeft{
-    left: 15px;
-    bottom: 0;
-    font-size: 14px;
-    position: absolute;
-    user-select: none;
-    text-align: center;
-    line-height: 46px;
-    background-color: #fff;
-    height: 46px;
+  .top-left-right{
+    height: 44px;
+    line-height: 40px;
+  }
+  .fixed{
+    position: fixed;
+    top: 0px;
+    z-index:99;
+    width: 100%
   }
 </style>
