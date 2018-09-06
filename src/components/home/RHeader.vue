@@ -1,17 +1,26 @@
 <template>
     <div>
       <van-nav-bar
+        style="height: 44px"
+        fixed
                    @click-left="onClickLeft"
                    @click-right="showRight=!showRight"
       >
         <van-icon name="contact" slot="left" />
         <van-icon name="search"  slot="right" />
-        <van-tabbar v-model="active" style="height: 46px;" slot="title" :fixed="false">
-          <van-tabbar-item style="flex-direction: initial;">A股</van-tabbar-item>
-          <van-tabbar-item style="flex-direction: initial;">美股</van-tabbar-item>
-          <van-tabbar-item style="flex-direction: initial;">证券</van-tabbar-item>
-          <van-tabbar-item style="flex-direction: initial;">证券</van-tabbar-item>
-        </van-tabbar>
+        <van-tabs slot="title" :line-width="14" v-model="tabIndex">
+          <van-tab v-for="(value,key) in topTabs" :key="key" >
+            <div slot="title">
+              {{value}}
+            </div>
+          </van-tab>
+        </van-tabs>
+        <!--<van-tabbar v-model="active" style="height: 46px;" slot="title" :fixed="false">-->
+          <!--<van-tabbar-item style="flex-direction: initial;">A股</van-tabbar-item>-->
+          <!--<van-tabbar-item style="flex-direction: initial;">美股</van-tabbar-item>-->
+          <!--<van-tabbar-item style="flex-direction: initial;">证券</van-tabbar-item>-->
+          <!--<van-tabbar-item style="flex-direction: initial;">证券</van-tabbar-item>-->
+        <!--</van-tabbar>-->
       </van-nav-bar>
 
 
@@ -37,6 +46,8 @@
           show:false,
           showRight:false,
           active:0,
+          topTabs:{'0':'A股','1':'证券','2':'A股','3':'国外'},
+          tabIndex:0,
         }
       },
       methods:{
@@ -49,5 +60,4 @@
 </script>
 
 <style scoped>
-
 </style>
