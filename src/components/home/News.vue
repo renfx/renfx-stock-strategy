@@ -75,6 +75,8 @@
           console.log(index,title)
           if(title=='全部'){
             this.whereList=[]
+          }else if(title=='财经'){
+            this.whereList=[{"key":"classify","separator":"=","value":"国内"+title}]
           }else{
             this.whereList=[{"key":"classify","separator":"=","value":title}]
           }

@@ -36,7 +36,7 @@
           show:false,
           showRight:false,
           active:0,
-          topTabs:['全部','国内财经','证券','基金','外汇','期货','美股'],
+          topTabs:['全部','财经','证券','基金','外汇','期货','美股'],
           tabIndex:0,
         }
       },
@@ -55,7 +55,7 @@
     }
 </script>
 
-<style >
+<style scoped>
   .top-left-right{
     height: 44px;
     line-height: 40px;
@@ -65,14 +65,5 @@
     top: 0px;
     z-index:99;
     width: 100%
-  }
-  .van-tabs__nav {
-    display: -webkit-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    position: relative;
-    background-color: #fff;
   }
 </style>
