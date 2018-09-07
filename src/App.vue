@@ -17,7 +17,6 @@ export default {
   watch:{
     $route(to, from) {
       let isBack = this.$router.isBack;
-      console.log(isBack)
       if( isBack ){
         this.transitionName = 'van-fade'
       }else{

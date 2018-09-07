@@ -11,7 +11,21 @@ export default new Router({
     {
       path: '/',
       name: 'main',
-      component: () => import(/* webpackChunkName: "group-home" */'../components/home/RMain')
+      component: () => import(/* webpackChunkName: "group-home" */'../components/home/RMain'),
+      children:[
+        {
+          path: '/library_books',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/News'),
+        },
+        {
+          path: '/equalizer',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/Quotation'),
+        },
+        {
+          path: '/extension',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/Strategy'),
+        }
+      ]
     },
     {
       path: '/search',

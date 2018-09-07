@@ -1,20 +1,10 @@
 <template>
     <div>
-      <!--<van-nav-bar-->
-        <!--style="height: 44px"-->
-        <!--fixed-->
-        <!--@click-left="onClickLeft"-->
-        <!--@click-right="clickSearch"-->
-      <!--&gt;-->
-        <!--<van-icon name="contact" slot="left" />-->
-        <!--<van-icon name="search"  slot="right" />-->
-
-      <!--</van-nav-bar>-->
       <van-row class="fixed">
         <van-col span="3" @click.native="onClickLeft" class="van-nav-bar van-hairline--top-bottom top-left-right" ><van-icon name="contact"/></van-col>
         <van-col span="17">
-          <van-tabs :line-width="14" v-model="tabIndex">
-            <van-tab v-for="(value,key) in topTabs" :key="key" >
+          <van-tabs @change='tabChange' style='display: -webkit-box;' :line-width="14" v-model="tabIndex">
+            <van-tab :title='value' v-for="(value,index) in topTabs" :key="index" >
               <div slot="title">
                 {{value}}
               </div>
@@ -23,10 +13,6 @@
         </van-col>
         <van-col span="4" @click.native="clickSearch" class="van-nav-bar van-hairline--top-bottom top-left-right" ><van-icon name="search"  /></van-col>
       </van-row>
-
-
-
-
 
 
       <van-popup style="height: 100%;width: 80%" v-model="show" position="left" >
@@ -50,7 +36,7 @@
           show:false,
           showRight:false,
           active:0,
-          topTabs:{'0':'A股','1':'证券','2':'A股','3':'国外','4':'国外','5':'国外'},
+          topTabs:['全部','国内财经','证券','基金','外汇','期货','美股'],
           tabIndex:0,
         }
       },
@@ -60,13 +46,16 @@
         },
         clickSearch(){
           this.$router.push("/search")
+        },
+        tabChange(index,title){
+          this.$emit('tabChange',index,title)
         }
       },
         name: "r-header"
     }
 </script>
 
-<style scoped>
+<style >
   .top-left-right{
     height: 44px;
     line-height: 40px;
@@ -76,5 +65,14 @@
     top: 0px;
     z-index:99;
     width: 100%
+  }
+  .van-tabs__nav {
+    display: -webkit-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    background-color: #fff;
   }
 </style>

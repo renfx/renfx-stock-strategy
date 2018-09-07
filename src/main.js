@@ -6,7 +6,11 @@ import router from './router'
 import Vant from 'vant';
 import { Lazyload } from 'vant';
 import MIcon from './components/icon/MaterialIcon'
+import api from './http/api.js'
+import dateUtils from './utils/dateUtils.js'
 import 'vant/lib/vant-css/index.css';
+Vue.prototype.$api=api;
+Vue.prototype.$dateUtils=dateUtils;
 Vue.config.productionTip = false
 Vue.use(Vant);
 Vue.use(Lazyload);
