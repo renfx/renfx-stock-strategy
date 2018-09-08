@@ -18,11 +18,11 @@
         <van-cell-group v-for="(item,index) in list" :key="index" class="list-cell-group">
           <van-cell >
             <van-tag plain type="primary" >{{item.classify}}</van-tag>
-            【{{item.title}}】<span class="timeSpan">{{$dateUtils.formatDate(new Date(item.time),'yyyy-MM-dd hh:mm')}}</span>
+            <span style='font-weight: bold;'>【{{item.title}}】</span><span class="timeSpan">{{$dateUtils.formatDate(new Date(item.time),'yyyy-MM-dd hh:mm')}}</span>
           </van-cell>
           <van-cell>
             <van-row>
-              <van-col span="24" style="font-size: 14px">{{contentLong(item.content)}}</van-col>
+              <van-col span="24" style="font-size: 12px">{{contentLong(item.content)}}</van-col>
             </van-row>
             <van-row>
               <van-col style="font-size: 12px;">
@@ -71,8 +71,11 @@
           ]
         }
       },methods: {
+		initQuery(){
+			this.page.pageNo = 1;
+			this.finished=false;
+		},
         tabChange(index,title){
-          console.log(index,title)
           if(title=='全部'){
             this.whereList=[]
           }else if(title=='财经'){
@@ -80,7 +83,7 @@
           }else{
             this.whereList=[{"key":"classify","separator":"=","value":title}]
           }
-          this.page.pageNo = 1;
+          this.initQuery();
           this.query().then(response=>{
             this.list=response.data.map.select;
             this.page.count = response.data.map.selectCount;
@@ -120,26 +123,22 @@
           })
         },
         contentLong(s){
-          if(s && s.length>60){
-            return s.substr(0,60)+"..."
+          if(s && s.length>80){
+            return s.substr(0,80)+"..."
           }
         },
         onLoad() {
-          setTimeout(() => {
-            this.query().then(response=>{
+          this.query().then(response=>{
               this.loading = false;
             })
-          }, 500);
         },
         onRefresh(){
-          setTimeout(() => {
-            this.page.pageNo = 1;
-            this.queryNoMsg().then(response=>{
+			this.initQuery();
+			this.queryNoMsg().then(response=>{
               this.isLoading = false;
               this.list=response.data.map.select;
               this.page.count = response.data.map.selectCount;
             })
-          }, 500);
 
 
         },
@@ -164,6 +163,5 @@
     color: #959595
   }
   .list-cell-group{
-    margin-bottom: 2px
   }
 </style>

@@ -32,10 +32,14 @@
       methods:{
         selectTabber(){
           let path = this.$route.path.replace("/","");
+		  console.log(path)
           Object.keys(this.tabbars).forEach((key,index)=>{
             if(key==path){
               this.index = index;
             }
+			if(path==""){
+			  this.index=2;
+			}
           });
 
         }

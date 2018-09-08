@@ -14,6 +14,10 @@ export default new Router({
       component: () => import(/* webpackChunkName: "group-home" */'../components/home/RMain'),
       children:[
         {
+          path: '',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/News'),
+        },
+        {
           path: '/library_books',
           component: () => import(/* webpackChunkName: "group-home" */'../components/home/News'),
         },
