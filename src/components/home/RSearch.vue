@@ -14,7 +14,6 @@
 <script>
     export default {
 	  mounted(){
-		this.drawLine();
 	  },
       data(){
         return {
