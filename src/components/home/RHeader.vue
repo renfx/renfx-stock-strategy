@@ -35,6 +35,7 @@
   import RSearch from "./RSearch";
 
   export default {
+    props:['topTabs'],
     mounted(){
       let tabName = this.$route.params.tabName;
       this.tabNameIndex(tabName);
@@ -45,7 +46,6 @@
         show: false,
         showRight: false,
         active: 0,
-        topTabs: ['全部', '财经', '证券', '基金', '外汇', '期货', '美股'],
         tabIndex: 0,
       }
     },

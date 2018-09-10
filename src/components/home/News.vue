@@ -1,6 +1,6 @@
 <template>
   <div>
-    <r-header @tabChange="tabChange"/>
+    <r-header @tabChange="tabChange" :topTabs="topTabs"/>
     <van-pull-refresh style="margin-bottom: 56px; margin-top: 44px;"  v-model="isLoading" @refresh="onRefresh">
       <van-swipe :autoplay="3000" class="van-hairline--bottom">
         <van-swipe-item v-for="(image, index) in images" :key="index">
@@ -49,13 +49,14 @@
         }
       },
       mounted(){
-
+        this.selectTab()
       },
 
       components: {
         RHeader},
       data(){
         return{
+          topTabs: ['全部', '财经', '证券', '基金', '外汇', '期货', '美股'],
           list: [],
           whereList:[],
           page:{
@@ -85,7 +86,7 @@
           this.$router.push('/library_books/'+title)
         },
         selectTab(title){
-          if(title=='全部' ||title==''){
+          if(!title || title=='全部' ||title==''){
             this.whereList=[]
           }else if(title=='财经'){
             this.whereList=[{"key":"classify","separator":"=","value":"国内"+title}]

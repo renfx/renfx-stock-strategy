@@ -30,7 +30,6 @@
     components: {},
     methods: {
       selectTabber() {
-        console.log(this.$route)
         let path = this.$route.path.replace("/", "");
         Object.keys(this.tabbars).forEach((key, index) => {
           if (path.indexOf(key)==0) {
