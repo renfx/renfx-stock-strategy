@@ -15,12 +15,12 @@
         :finished="finished"
         @load="onLoad"
       >
-        <van-cell-group v-for="(item,index) in list" :key="index" class="list-cell-group">
-          <van-cell >
-            <van-tag plain type="primary" >{{item.classify}}</van-tag>
+      <van-cell-group v-for="(item,index) in list" :key="index" class="list-cell-group">
+          <van-cell :to="newsUrl(item)">
+            <van-tag  type="primary" >{{item.classify}}</van-tag>
             <span style='font-weight: bold;'>【{{item.title}}】</span><span class="timeSpan">{{$dateUtils.formatDate(new Date(item.time),'yyyy-MM-dd hh:mm')}}</span>
           </van-cell>
-          <van-cell>
+          <van-cell :to="newsUrl(item)">
             <van-row>
               <van-col span="24" style="font-size: 12px">{{contentLong(item.content)}}</van-col>
             </van-row>
@@ -42,6 +42,12 @@
     import RHeader from "./RHeader";
 
     export default {
+      watch: {
+        $route(to, from) {
+          let title = to.params.tabName;
+          this.selectTab(title)
+        }
+      },
       mounted(){
 
       },
@@ -71,12 +77,15 @@
           ]
         }
       },methods: {
-		initQuery(){
-			this.page.pageNo = 1;
-			this.finished=false;
-		},
+        initQuery(){
+          this.page.pageNo = 1;
+          this.finished=false;
+        },
         tabChange(index,title){
-          if(title=='全部'){
+          this.$router.push('/library_books/'+title)
+        },
+        selectTab(title){
+          if(title=='全部' ||title==''){
             this.whereList=[]
           }else if(title=='财经'){
             this.whereList=[{"key":"classify","separator":"=","value":"国内"+title}]
@@ -88,6 +97,10 @@
             this.list=response.data.map.select;
             this.page.count = response.data.map.selectCount;
           })
+        },
+        newsUrl(row){
+          let url = '../back/article?title='+encodeURI(row.title)+'&time='+this.$dateUtils.formatDate(new Date(row.time),'yyyy-MM-dd hh:mm:ss');
+          return url;
         },
 
         defaultParam(){
@@ -126,21 +139,22 @@
           if(s && s.length>80){
             return s.substr(0,80)+"..."
           }
+          return s;
         },
         onLoad() {
           this.query().then(response=>{
-              this.loading = false;
-            })
+            this.loading = false;
+          })
         },
         onRefresh(){
-			this.initQuery();
-			this.queryNoMsg().then(response=>{
+          setTimeout(() => {
+            this.initQuery();
+            this.queryNoMsg().then(response=>{
               this.isLoading = false;
               this.list=response.data.map.select;
               this.page.count = response.data.map.selectCount;
             })
-
-
+          }, 500);
         },
       },
     }

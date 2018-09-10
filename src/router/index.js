@@ -22,6 +22,10 @@ export default new Router({
           component: () => import(/* webpackChunkName: "group-home" */'../components/home/News'),
         },
         {
+          path: '/library_books/:tabName',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/News'),
+        },
+        {
           path: '/equalizer',
           component: () => import(/* webpackChunkName: "group-home" */'../components/home/Quotation'),
         },
@@ -35,6 +39,19 @@ export default new Router({
       path: '/search',
         name: 'search',
       component: () => import(/* webpackChunkName: "group-home" */'../components/home/RSearch'),
-    }
+    },
+    {
+      path: '/back',
+      name: 'back',
+      component: () => import(/* webpackChunkName: "group-home" */'../components/home/RBackPage'),
+      children:[
+        {
+          path: 'article',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/RArticle'),
+          meta:{title:'查看正文'}
+        },
+
+      ]
+    },
   ]
 })

@@ -7,20 +7,24 @@
           <img v-lazy="image" >
         </van-swipe-item>
       </van-swipe>
-      <van-list
-        class="van-hairline--top"
-        style="margin-top: 6px"
-        v-model="loading"
-        :finished="finished"
-        @load="onLoad"
-      >
-        <van-cell v-for="item in list" :key="item" :title="item + ''" />
-      </van-list>
+      <!--<van-list-->
+        <!--class="van-hairline&#45;&#45;top"-->
+        <!--style="margin-top: 6px"-->
+        <!--v-model="loading"-->
+        <!--:finished="finished"-->
+        <!--@load="onLoad"-->
+      <!--&gt;-->
+        <!--<van-cell v-for="item in list" :key="item" :title="item + ''" />-->
+      <!--</van-list>-->
     </van-pull-refresh>
   </div>
 </template>
 
 <script>
+  var upColor = '#ec0000';
+  var upBorderColor = '#8A0000';
+  var downColor = '#00da3c';
+  var downBorderColor = '#008F28';
     import RHeader from "./RHeader";
 
     export default {
