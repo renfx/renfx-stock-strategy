@@ -4,7 +4,20 @@ var nowDay = now.getDate();              //当前日
 var nowMonth = now.getMonth();           //当前月
 var nowYear = now.getYear();             //当前年
 nowYear += (nowYear < 2000) ? 1900 : 0;  //
+function beforeNowDays(date,day) {
+  // 先获取当前时间
+  var curDate = (date).getTime();
+  var days = day * 24 * 3600 * 1000;
+  var pastResult = curDate - days;
 
+  // 日期函数，定义起点为半年前
+  var pastDate = new Date(pastResult),
+    pastYear = pastDate.getFullYear(),
+    pastMonth = pastDate.getMonth() + 1,
+    pastDay = pastDate.getDate();
+
+  return pastYear + '-' + pastMonth + '-' + pastDay;
+}
 function formatDate(date, fmt) {
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
@@ -136,5 +149,8 @@ export default {
   },
   getMonthLastDay() {
     return getMonth("e");
+  },
+  beforeNowDays(date,day){
+    return beforeNowDays(date,day);
   }
 }
