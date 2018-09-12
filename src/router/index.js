@@ -50,6 +50,11 @@ export default new Router({
           component: () => import(/* webpackChunkName: "group-home" */'../components/home/RArticle'),
           meta:{title:'查看正文'}
         },
+        {
+          path: 'stock',
+          component: () => import(/* webpackChunkName: "group-home" */'../components/home/StockPage'),
+          meta:{title:'股票'}
+        },
 
       ]
     },

@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 46px">
+  <div >
     <van-cell-group  class="list-cell-group">
       <van-cell >
         <span style='font-weight: bold;'>【{{data.title}}】</span><span class="timeSpan">{{$dateUtils.formatDate(new Date(data.time),'yyyy-MM-dd hh:mm')}}</span>

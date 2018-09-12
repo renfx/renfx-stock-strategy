@@ -28,6 +28,11 @@
       }
     },
     components: {},
+    watch:{
+      $route(to, from) {
+        this.selectTabber();
+      }
+    },
     methods: {
       selectTabber() {
         let path = this.$route.path.replace("/", "");

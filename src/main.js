@@ -10,9 +10,9 @@ import api from './http/api.js'
 import dateUtils from './utils/dateUtils.js'
 import 'vant/lib/vant-css/index.css';
 // 引入echarts
-//import echarts from 'echarts'
+import echarts from 'echarts'
 
-//Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts = echarts
 Vue.prototype.$api=api;
 Vue.prototype.$dateUtils=dateUtils;
 Vue.config.productionTip = false

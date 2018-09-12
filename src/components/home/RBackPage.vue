@@ -9,7 +9,7 @@
       left-arrow
       @click-left="onClickLeft"
     />
-    <router-view/>
+    <router-view style="margin-top: 46px" @setTitle="setTitle"/>
   </div>
 </template>
 
@@ -22,6 +22,9 @@
           onClickLeft(){
             this.$router.goBack()
           },
+        setTitle(title){
+            this.title=title;
+        },
       },
       data(){
         return{
