@@ -64,7 +64,7 @@
             pageSize:10,
             orderBy:'time',
             orderType:'desc',
-            count:0,
+            totalCount:0,
           },
           loading: false,
           isLoading: false,
@@ -96,7 +96,7 @@
           this.initQuery();
           this.query().then(response=>{
             this.list=response.data.map.select;
-            this.page.count = response.data.map.selectCount;
+            this.page.totalCount = response.data.map.selectCount;
           })
         },
         newsUrl(row){
@@ -113,8 +113,8 @@
         },
         defaultHandle(response){
           this.list = this.list.length==0?response.data.map.select:(this.list.concat(response.data.map.select));
-          this.page.count = response.data.map.selectCount;
-          let lastPage = parseInt(this.page.count/this.page.pageSize);
+          this.page.totalCount = response.data.map.selectCount;
+          let lastPage = parseInt(this.page.totalCount/this.page.pageSize);
           if(lastPage<=this.page.pageNo){
             this.finished = true;
           }
@@ -153,7 +153,7 @@
             this.queryNoMsg().then(response=>{
               this.isLoading = false;
               this.list=response.data.map.select;
-              this.page.count = response.data.map.selectCount;
+              this.page.totalCount = response.data.map.selectCount;
             })
           }, 500);
         },
