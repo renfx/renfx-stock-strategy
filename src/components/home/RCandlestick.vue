@@ -118,7 +118,7 @@
               yAxis: [{
               scale: true,
               splitNumber: 2,
-              axisLine: { lineStyle: { color: '#777' } },
+              axisLine: {show: false},
               splitLine: { show: true },
               axisTick: { show: false },
               axisLabel: {
@@ -239,7 +239,9 @@
         refreshChart(){
           this.myChart.setOption(this.getOption());//echarts重绘
           this.myChart.on('datazoom',param=>{
-            if(param.start<5 && this.hasData){
+            console.log(param.start)
+            if(param.start<5 && this.hasData &&this.sysn){
+              this.sysn=false;
               this.dataZoomStart = param.start;
               this.dataZoomEnd = param.end;
               this.query()
@@ -267,7 +269,8 @@
           this.myChart.showLoading();
           this.$api.postNoMsg('basic/select',this.queryParam()).then(response=>{
             this.endDate = this.beginDate;
-            this.beginDate = this.$dateUtils.beforeNowDays(new Date(this.beginDate),365);
+            this.beginDate = this.$dateUtils.beforeNowDays(new Date(this.beginDate),this.onceLength);
+
             let list = response.data.map.select
             let dataTemp=[], datesTemp=[],volumesTemp=[],dataMA5Temp=[], dataMA10Temp=[],dataMA20Temp=[];
             let stockName='';
@@ -307,6 +310,7 @@
                 this.hasData = false;
               }
             })
+            this.sysn=true;
           })
         },
         calculateMA(dayCount, data) {
@@ -327,7 +331,9 @@
       },
       data(){
         return{
-          beginDate:this.$dateUtils.beforeNowDays(new Date(),365),
+          sysn:true,//防止ZOOM改变时，多次请求
+          onceLength:180,
+          beginDate:this.$dateUtils.beforeNowDays(new Date(),180),
           endDate:this.$dateUtils.formatDate(new Date(),'yyyy-MM-dd'),
           dates:[],
           data:[],
@@ -337,7 +343,7 @@
           dataMA20:[],
           title:'',
           myChart:{},
-          dataZoomStart:90,
+          dataZoomStart:80,
           dataZoomEnd:100,
           hasData:true,
         }
