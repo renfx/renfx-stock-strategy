@@ -15,7 +15,7 @@
         :finished="finished"
         @load="onLoad"
       >
-      <van-cell-group v-for="(item,index) in list" :key="index" class="list-cell-group">
+        <van-cell-group v-for="(item,index) in list" :key="index" class="list-cell-group">
           <van-cell :to="newsUrl(item)">
             <van-tag  type="primary" >{{item.classify}}</van-tag>
             <span style='font-weight: bold;'>【{{item.title}}】</span><span class="timeSpan">{{$dateUtils.formatDate(new Date(item.time),'yyyy-MM-dd hh:mm')}}</span>
@@ -181,5 +181,4 @@
   }
   .list-cell-group{
   }
-  ::-webkit-scrollbar {display:none}
 </style>
