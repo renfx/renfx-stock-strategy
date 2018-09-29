@@ -4,7 +4,7 @@ import vueResource  from 'vue-resource';
 
 Vue.use(vueResource)
 Vue.http.options.emulateJSON = true;
-const baseURL = "http://localhost:6060/";
+const baseURL = "http://localhost:5050/";
 const loadOption = {
   mask: true,
   duration: 0,       // 持续展示 toast

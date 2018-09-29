@@ -26,7 +26,14 @@ export default {
     }
   },
   methods: {
-
+    queryBasicTables(){
+      this.$api.postNoMsg('baseData/getByField',{fieldName:'basicStocks'}).then(response=>{
+        this.$store.commit('setBasicStocks',response.data.map.value)
+      })
+    }
+  },
+  mounted(){
+    this.queryBasicTables();
   }
 }
 </script>
