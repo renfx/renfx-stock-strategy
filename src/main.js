@@ -9,6 +9,7 @@ import api from './http/api.js'
 import dateUtils from './utils/dateUtils.js'
 import chinessToPy from './utils/chinessToPy.js'
 import 'vant/lib/vant-css/index.css';
+import './css/main.css';
 // 引入echarts
 import echarts from 'echarts'
 

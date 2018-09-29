@@ -45,7 +45,9 @@
       watch: {
         $route(to, from) {
           let title = to.params.tabName;
-          this.selectTab(title)
+          if(title){
+            this.selectTab(title)
+          }
         }
       },
       mounted(){
@@ -179,4 +181,5 @@
   }
   .list-cell-group{
   }
+  ::-webkit-scrollbar {display:none}
 </style>

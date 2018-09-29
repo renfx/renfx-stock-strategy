@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'main',
+      name: '',
       component: () => import(/* webpackChunkName: "group-home" */'../components/home/RMain'),
       children:[
         {

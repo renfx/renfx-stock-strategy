@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <transition :name='transitionName'>
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -43,4 +45,5 @@ export default {
     background-color: #fafafa;
   }
 
+  ::-webkit-scrollbar {display:none}
 </style>
