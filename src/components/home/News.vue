@@ -174,11 +174,7 @@
     background-color: #fff;
     pointer-events: none;
   }
-  .timeSpan{
-    font-size: 12px;
-    float: right;
-    color: #959595
-  }
+
   .list-cell-group{
   }
 </style>

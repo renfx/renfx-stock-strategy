@@ -48,7 +48,9 @@ export default new Router({
         {
           path: 'article',
           component: () => import(/* webpackChunkName: "group-home" */'../components/home/RArticle'),
-          meta:{title:'查看正文'}
+          meta:{
+            title:'查看正文',
+          }
         },
         {
           path: 'stock',
